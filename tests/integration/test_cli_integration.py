@@ -5,7 +5,10 @@ Integration Tests - CLI + Calculator Working Together
 import subprocess
 import sys
 import pytest
+from src.cli import perform_calculation
 
+def test_add_operation():
+    assert perform_calculation("add", 2, 3) == 5
 
 class TestCLIIntegration:
     """Integration tests for CLI calculator."""
