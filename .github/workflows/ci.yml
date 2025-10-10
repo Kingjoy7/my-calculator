@@ -216,7 +216,7 @@ jobs:
           path: artifacts/security
         continue-on-error: true
 
-      - name: Simple package: compile, zip and upload
+      - name: "Simple package: compile, zip and upload"
         run: |
           echo "Creating simple deployment package..."
           rm -f deployment-package.zip || true
