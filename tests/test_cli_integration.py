@@ -1,6 +1,7 @@
 """
 Integration Tests - CLI + Calculator Working Together
 """
+
 import subprocess
 import sys
 import pytest
@@ -43,7 +44,9 @@ class TestCLIIntegration:
     def test_cli_subtract_missing_operand_error(self):
         result = self.run_cli("subtract", "5")
         assert result.returncode == 1
-        assert result.stdout.strip().startswith("Operation 'subtract' requires two numbers.")
+        assert result.stdout.strip().startswith(
+            "Operation 'subtract' requires two numbers."
+        )
 
     def test_cli_divide_zero_error(self):
         result = self.run_cli("divide", "10", "0")
@@ -62,16 +65,18 @@ class TestCalculatorModuleIntegration:
     def test_chained_operations(self):
         """Test using results from one operation in another."""
         from src.calculator import add, multiply, divide
-        step1 = add(5, 3)         # 8
+
+        step1 = add(5, 3)  # 8
         step2 = multiply(step1, 2)  # 16
-        step3 = divide(step2, 4)    # 4
+        step3 = divide(step2, 4)  # 4
         assert step3 == 4.0
 
     def test_complex_calculation_integration(self):
         """Test complex calculation using multiple functions."""
         from src.calculator import power, square_root, add
-        a_squared = power(3, 2)       # 9
-        b_squared = power(4, 2)       # 16
+
+        a_squared = power(3, 2)  # 9
+        b_squared = power(4, 2)  # 16
         sum_squares = add(a_squared, b_squared)  # 25
-        hypotenuse = square_root(sum_squares)    # 5
+        hypotenuse = square_root(sum_squares)  # 5
         assert hypotenuse == 5.0

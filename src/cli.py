@@ -2,6 +2,7 @@ import sys
 import click
 from calculator import add, subtract, multiply, divide, power, square_root
 
+
 def perform_calculation(operation, num1, num2=None):
     """Simple calculator logic handler."""
     try:
@@ -27,6 +28,7 @@ def perform_calculation(operation, num1, num2=None):
         click.echo(f"Unexpected error: {e}")
         sys.exit(1)
 
+
 @click.command()
 @click.argument("operation")
 @click.argument("num1", type=float)
@@ -42,6 +44,7 @@ def calculate(operation, num1, num2=None):
         result = perform_calculation(operation, num1, num2)
 
     click.echo(int(result) if result == int(result) else f"{result:.2f}")
+
 
 if __name__ == "__main__":
     calculate()
