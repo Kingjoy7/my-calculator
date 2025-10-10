@@ -1,5 +1,6 @@
 """
 Integration Tests - CLI + Calculator Working Together
+These tests ensure the CLI correctly invokes calculator functions
 """
 
 from click.testing import CliRunner
